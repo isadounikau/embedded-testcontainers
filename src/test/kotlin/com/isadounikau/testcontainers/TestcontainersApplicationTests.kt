@@ -19,11 +19,14 @@ class TestcontainersApplicationTests {
 
 	@Test
 	fun `should save entity into database`() {
+		// simple objet for JPA, the ID isn't specified
 		val expectedResult = TestEntity()
 		expectedResult.value = "Test Data"
 
+		// operation saves data into tests database
 		val actualResult = entityRepository.save(expectedResult)
 
+		// simple data verification
 		assertThat(actualResult).isNotNull
 		assertThat(actualResult.id).isNotNull
 		assertThat(actualResult.value).isEqualTo(expectedResult.value)
